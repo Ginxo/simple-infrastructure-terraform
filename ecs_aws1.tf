@@ -31,7 +31,7 @@ resource "aws_ecs_service" "service-microservices" {
   iam_role        = "${aws_iam_role.ecs_service.name}"
 
   load_balancer {
-    target_group_arn = "${aws_alb_target_group.${var.environment}.id}"
+    target_group_arn = "${aws_alb_target_group.main.id}"
     container_name   = "aws1-load-balancer"
     container_port   = "8080"
   }
