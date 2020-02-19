@@ -2,17 +2,17 @@
 
 To execute terraform prepare your .env file in the root project folder based in the env.example file.
  
-In order to use terraform, you should execute
+In order to use terraform, you should execute:
 ```
-env-cmd terraform init
-```
-
-In order to show and validate the plan
-```
-env-cmd terraform validate
+yarn terraform init <module_path>
 ```
 
-In order to apply the plan
+In order to show and validate the plan:
 ```
-env-cmd terraform apply
+yarn terraform validate <module_path>
+```
+
+In order to apply the plan:
+```
+yarn terraform apply <module_path>
 ```
