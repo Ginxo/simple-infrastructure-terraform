@@ -6,6 +6,10 @@ terraform {
   }
 }
 
+output "public-ip-staging" {
+  value = module.ec2.instance_public_ip
+}
+
 # Specify the provider and access details
 provider "aws" {}
 
