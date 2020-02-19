@@ -1,19 +1,6 @@
-variable "aws_region" {
-  description = "The AWS region to create things in."
-  default     = "eu-west-1"
-}
-
-variable "access_key" {
-  description = "The AWS access key."
-}
-
-variable "secret_key" {
-  description = "The AWS secret key."
-}
-
 variable "environment" {
   description = "The Database Password."
-  default     = "dev"
+  default     = "staging"
 }
 
 variable "instance_type" {

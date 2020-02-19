@@ -61,7 +61,7 @@ data "template_file" "cloud_config" {
   template = "${file("${path.module}/cloud-config.yml")}"
 
   vars {
-    aws_region = "${var.aws_region}"
+    aws_region = "${var.TF_VAR_AWS_DEFAULT_REGION}"
     ecs_cluster_name = "${aws_ecs_cluster.main-ecs-cluster.name}"
     ecs_log_level = "info"
     ecs_agent_version = "latest"

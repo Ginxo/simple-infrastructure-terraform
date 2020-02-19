@@ -8,7 +8,7 @@ data "template_file" "task_definition-microservice" {
   vars {
     image_url           = "525334852292.dkr.ecr.eu-west-1.amazonaws.com/devel"
     container_name      = "microservice-container"
-    log_group_region    = "${var.aws_region}"
+    log_group_region    = "${var.TF_VAR_AWS_DEFAULT_REGION}"
     log_group_name      = "${aws_cloudwatch_log_group.app.name}"
     ACTIVE_PROFILE      = "${var.environment}"
     DATABASE_DIALECT    = "${var.db_dialect}"
