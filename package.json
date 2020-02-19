@@ -1,0 +1,10 @@
+{
+  "name": "simple-infrastructure-terraform",
+  "version": "1.0.0",
+  "repository": "https://github.com/Ginxo/simple-infrastructure-terraform.git",
+  "author": "fetilla <fetilla@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "env-cmd": "10.0.1"
+  }
+}

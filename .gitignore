@@ -1,1 +1,12 @@
+#DEPENDENCIES
+node_modules/**
+
+#IDE
 *.iml
+.idea/**
+
+#ENV-CMD
+.env
+
+#YARN
+yarn.lock
