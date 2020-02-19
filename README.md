@@ -9,7 +9,7 @@ yarn terraform init <module_path>
 
 In order to show and validate the plan:
 ```
-yarn terraform validate <module_path>
+yarn terraform plan <module_path>
 ```
 
 In order to apply the plan:
