@@ -4,6 +4,9 @@
   "repository": "https://github.com/Ginxo/simple-infrastructure-terraform.git",
   "author": "fetilla <fetilla@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "terraform": "env-cmd terraform"
+  },
   "devDependencies": {
     "env-cmd": "10.0.1"
   }

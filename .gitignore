@@ -1,6 +1,9 @@
 #DEPENDENCIES
 node_modules/**
 
+#TERRAFORM
+.terraform/**
+
 #IDE
 *.iml
 .idea/**
@@ -10,3 +13,4 @@ node_modules/**
 
 #YARN
 yarn.lock
+yarn-error.log
