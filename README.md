@@ -16,3 +16,8 @@ In order to apply the plan:
 ```
 yarn terraform apply <module_path>
 ```
+
+In order to enter in terraform console:
+```
+yarn terraform console <module_path>
+```

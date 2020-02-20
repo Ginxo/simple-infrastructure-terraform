@@ -14,5 +14,4 @@ module "elb" {
 
   project_name = "sercore"
   environment = "staging"
-  vpc_default = "vpc-410de238"
 }

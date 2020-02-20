@@ -1,20 +1,3 @@
-data "aws_ami" "ubuntu" {
-  most_recent = true
-
-  filter {
-    name   = "name"
-    values = ["ubuntu/images/hvm-ssd/ubuntu-trusty-14.04-amd64-server-*"]
-  }
-
-  filter {
-    name   = "virtualization-type"
-    values = ["hvm"]
-  }
-
-  owners = ["099720109477"] # Canonical
-}
-
-
 resource "aws_launch_configuration" "web" {
   name_prefix   = "${var.project_name}-config"
   image_id      = data.aws_ami.ubuntu.id
@@ -27,4 +10,8 @@ resource "aws_launch_configuration" "web" {
   ]
 
   user_data = file("modules/elb/userData.txt")
+
+  lifecycle {
+    create_before_destroy = true
+  }
 }
