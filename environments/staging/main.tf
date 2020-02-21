@@ -8,13 +8,50 @@ terraform {
   }
 }
 
-output "public-ip-staging" {
+output "ecr_dns" {
+  value = module.ecr.ecr_dns
+}
+
+output "db_endpoint" {
+  value = module.rds.db_endpoint
+}
+
+/*output "public-ip-staging" {
   value = module.ec2.instance_public_ip
 }
+*/
 
 # Specify the provider and access details
 provider "aws" {}
 
+module "ecr" {
+  source = "../../modules/ecr"
+
+  project_name = var.g_project_name
+}
+
+module "rds" {
+  source = "../../modules/rds"
+
+  project_name = var.g_project_name
+  environment = var.environment
+  db_user_name = var.db_user_name
+  db_password = var.db_password
+}
+
+module "ecs" {
+  source = "../../modules/ecs"
+
+  environment = var.environment
+  project_name = var.g_project_name
+  db_user_name = var.db_user_name
+  db_password = var.db_password
+  aws_region = var.aws_region
+  ecr_dns = module.ecr.ecr_dns
+  db_endpoint = module.rds.db_endpoint
+}
+
+/*
 module "ec2" {
   source = "../../modules/ec2"
 
@@ -38,3 +75,4 @@ module "elb" {
   project_name = var.g_project_name
   environment = var.environment
 }
+*/
