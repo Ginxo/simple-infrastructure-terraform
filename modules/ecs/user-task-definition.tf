@@ -1,5 +1,5 @@
 data "template_file" "user_task_template" {
-  template = "${file("./templates/tasks/aws1.json")}"
+  template = "${file("./templates/tasks/template.json")}"
   vars = {
     // TODO check the image name and database url
     image_url = "${var.ecr_dns}/user:latest"
@@ -15,6 +15,6 @@ data "template_file" "user_task_template" {
 }
 
 resource "aws_ecs_task_definition" "user_task_definition" {
-  family = "service"
+  family = "user_task_definition"
   container_definitions = data.template_file.user_task_template.rendered
 }
