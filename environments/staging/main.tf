@@ -8,6 +8,10 @@ terraform {
   }
 }
 
+# Specify the provider and access details
+provider "aws" {}
+
+
 output "ecr_dns" {
   value = module.ecr.ecr_dns
 }
@@ -16,13 +20,13 @@ output "db_endpoint" {
   value = module.rds.db_endpoint
 }
 
-/*output "public-ip-staging" {
-  value = module.ec2.instance_public_ip
+output "lb_arn" {
+  value = module.ecs.lb_arn
 }
-*/
 
-# Specify the provider and access details
-provider "aws" {}
+output "lb_dns" {
+  value = module.ecs.lb_dns
+}
 
 module "ecr" {
   source = "../../modules/ecr"
@@ -51,21 +55,24 @@ module "ecs" {
   db_endpoint = module.rds.db_endpoint
 }
 
-/*
+module "api" {
+  source = "../../modules/api"
+
+  environment = var.environment
+  project_name = var.g_project_name
+  lb_arn = module.ecs.lb_arn
+  lb_dns = module.ecs.lb_dns
+}
+
+/*output "public-ip-staging" {
+  value = module.ec2.instance_public_ip
+}
+
 module "ec2" {
   source = "../../modules/ec2"
 
   public_key = var.public_key
   environment = var.environment
-}
-
-module "rds" {
-  source = "../../modules/rds"
-
-  project_name = var.g_project_name
-  environment = var.environment
-  db_user_name = "dbuserstaging"
-  db_password = "123456789"
 }
 
 module "elb" {

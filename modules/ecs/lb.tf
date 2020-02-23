@@ -5,9 +5,7 @@ data "aws_subnet_ids" "selected" {
 resource "aws_lb" "lb" {
   name = "${var.environment}-lb"
   internal = false
-  load_balancer_type = "application"
-  security_groups = [
-    aws_security_group.allow_http_anywhere.id]
+  load_balancer_type = "network"
   subnets = data.aws_subnet_ids.selected.ids
 
   tags = {
