@@ -1,4 +1,4 @@
-resource "aws_ecr_repository" "ecr_repository" {
+resource "aws_ecr_repository" "user_ecr_repository" {
   name                 = "user"
   image_tag_mutability = "MUTABLE"
 

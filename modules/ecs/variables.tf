@@ -6,6 +6,8 @@ variable "project_name" {
   description = "The project name"
 }
 
+variable "public_key" {}
+
 variable "ecr_dns" {}
 
 variable "db_user_name" {

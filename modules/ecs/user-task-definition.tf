@@ -1,5 +1,5 @@
 data "template_file" "user_task_template" {
-  template = "${file("./templates/tasks/template.json")}"
+  template = file("./templates/tasks/template.json")
   vars = {
     // TODO check the image name and database url
     image_url = "${var.ecr_dns}/user:latest"

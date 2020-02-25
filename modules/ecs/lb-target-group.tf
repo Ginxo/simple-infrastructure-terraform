@@ -1,5 +1,5 @@
 resource "aws_lb_target_group" "lb_target_group" {
-  name     = "${var.environment}-lb-target-group"
+  name_prefix = "lb-"
   port     = 8080
   protocol = "TCP"
   vpc_id   = data.aws_vpc.selected.id
@@ -8,4 +8,6 @@ resource "aws_lb_target_group" "lb_target_group" {
     enabled = false
     type = "lb_cookie"
   }
+
+  depends_on = [aws_lb.lb]
 }

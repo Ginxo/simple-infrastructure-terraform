@@ -5,7 +5,11 @@
   "author": "fetilla <fetilla@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "terraform": "env-cmd terraform"
+    "terraform": "env-cmd terraform",
+    "apply": "env-cmd terraform apply environments/staging",
+    "applyy": "env-cmd terraform apply --auto-approve environments/staging",
+    "plan": "env-cmd terraform plan environments/staging",
+    "destroy": "env-cmd terraform destroy environments/staging"
   },
   "devDependencies": {
     "env-cmd": "10.0.1"
