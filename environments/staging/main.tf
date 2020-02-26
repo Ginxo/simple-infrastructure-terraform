@@ -3,8 +3,6 @@ terraform {
     bucket = "sercore-terraform"
     key = "staging"
     region = "eu-west-1"
-    // TODO create TerraformLock DynamoDb
-    //dynamodb_table = "TerraformLock"
   }
 }
 
