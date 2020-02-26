@@ -5,6 +5,8 @@ resource "aws_ecs_service" "user-service" {
   desired_count   = 1
   deployment_minimum_healthy_percent = 0
   deployment_maximum_percent = 100
+  iam_role = aws_iam_role.ecs-service-role.name
+
 
   load_balancer {
     target_group_arn = aws_lb_target_group.lb_target_group.arn

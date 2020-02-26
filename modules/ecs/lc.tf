@@ -35,6 +35,8 @@ resource "aws_launch_configuration" "web" {
 
   user_data = data.template_file.lc_user_data.rendered
 
+  iam_instance_profile = aws_iam_instance_profile.ecs-instance-profile.id
+
   lifecycle {
     create_before_destroy = true
   }
