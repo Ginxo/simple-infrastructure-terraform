@@ -14,6 +14,7 @@
       { "name" : "ACTIVE_PROFILE", "value" : "${ACTIVE_PROFILE}" },
       { "name" : "DATABASE_DIALECT", "value" : "${DATABASE_DIALECT}" },
       { "name" : "DATASOURCE_URL", "value" : "${DATASOURCE_URL}" },
+      { "name" : "DATASOURCE_DB_NAME", "value" : "${DATASOURCE_DB_NAME}" },
       { "name" : "DATASOURCE_USERNAME", "value" : "${DATASOURCE_USERNAME}" },
       { "name" : "DATASOURCE_PASSWORD", "value" : "${DATASOURCE_PASSWORD}" }
     ],

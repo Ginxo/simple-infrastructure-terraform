@@ -25,11 +25,9 @@ module "ecs" {
   aws_region = var.aws_region
   ecr_dns = module.ecr.ecr_dns
   ecr_image_version = "latest"
-  //db_endpoint = module.rds.db_endpoint
-  db_endpoint = "endpoint"
+  db_endpoint = module.rds.db_endpoint
 }
 
-/*
 module "rds" {
   source = "../../modules/rds"
 
@@ -38,6 +36,9 @@ module "rds" {
   db_user_name = var.db_user_name
   db_password = var.db_password
 }
+
+/*
+
 
 module "api" {
   source = "../../modules/api"

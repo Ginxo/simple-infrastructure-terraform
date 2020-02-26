@@ -9,6 +9,7 @@ data "template_file" "user_task_template" {
     DATASOURCE_URL = var.db_endpoint
     DATASOURCE_USERNAME = var.db_user_name
     DATASOURCE_PASSWORD = var.db_password
+    DATASOURCE_DB_NAME = "${var.project_name}${var.environment}"
     log_group_region = var.aws_region
     log_group_name   = aws_cloudwatch_log_group.app.name
   }

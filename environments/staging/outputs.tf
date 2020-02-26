@@ -10,8 +10,6 @@ output "lb_dns" {
   value = module.ecs.lb_dns
 }
 
-/*
 output "db_endpoint" {
   value = module.rds.db_endpoint
 }
-*/
