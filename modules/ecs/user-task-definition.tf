@@ -1,8 +1,8 @@
 data "template_file" "user_task_template" {
-  template = file("./templates/tasks/template.json")
+  template = file("./resources/templates/tasks/template.json")
   vars = {
     // TODO check the image name and database url
-    image_url = "${var.ecr_dns}/user:latest"
+    image_url = "${var.ecr_dns}:${var.ecr_image_version}"
     container_name = "user_container"
     ACTIVE_PROFILE = var.environment
     DATABASE_DIALECT = ""

@@ -2,7 +2,7 @@ resource "aws_ecs_service" "user-service" {
   name            = "user-service"
   cluster         = aws_ecs_cluster.ecs_cluster.id
   task_definition = aws_ecs_task_definition.user_task_definition.arn
-  desired_count   = 0
+  desired_count   = 1
   deployment_minimum_healthy_percent = 0
   deployment_maximum_percent = 100
 
