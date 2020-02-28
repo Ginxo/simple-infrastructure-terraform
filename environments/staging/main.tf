@@ -38,9 +38,6 @@ module "rds" {
   db_password = var.db_password
 }
 
-/*
-
-
 module "api" {
   source = "../../modules/api"
 
@@ -49,4 +46,3 @@ module "api" {
   lb_arn = module.ecs.lb_arn
   lb_dns = module.ecs.lb_dns
 }
-*/

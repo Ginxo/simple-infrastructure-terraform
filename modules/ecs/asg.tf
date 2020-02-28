@@ -2,7 +2,7 @@ resource "aws_autoscaling_group" "web" {
   name = "${var.project_name}-group"
   max_size = 2
   min_size = 0
-  desired_capacity = 0
+  desired_capacity = 1
   launch_configuration = aws_launch_configuration.web.name
   vpc_zone_identifier = data.aws_subnet_ids.selected.ids
   health_check_grace_period = 10
