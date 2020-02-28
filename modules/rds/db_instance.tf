@@ -9,4 +9,5 @@ resource "aws_db_instance" "rds-db" {
   password = var.db_password
   publicly_accessible = false
   skip_final_snapshot = true
+  
 }

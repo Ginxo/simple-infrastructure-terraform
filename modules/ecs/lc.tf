@@ -30,7 +30,8 @@ resource "aws_launch_configuration" "web" {
 
   security_groups = [
     aws_security_group.allow_http_anywhere.id,
-    aws_security_group.allow_ssh_anywhere.id
+    aws_security_group.allow_ssh_anywhere.id,
+    var.db_connection_security_group_id
   ]
 
   user_data = data.template_file.lc_user_data.rendered

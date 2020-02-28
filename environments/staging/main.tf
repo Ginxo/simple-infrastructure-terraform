@@ -26,6 +26,7 @@ module "ecs" {
   ecr_dns = module.ecr.ecr_dns
   ecr_image_version = "latest"
   db_endpoint = module.rds.db_endpoint
+  db_connection_security_group_id = module.rds.rds_connection_security_group_id
 }
 
 module "rds" {
