@@ -11,7 +11,7 @@ resource "aws_api_gateway_integration" "integration_api_users_endpoints" {
   connection_id = aws_api_gateway_vpc_link.vpc_link.id
   integration_http_method = "ANY"
   type                    = "HTTP_PROXY"
-  uri                     = "http://${var.lb_dns}:8080/api/users{proxy}/"
+  uri                     = "http://${var.lb_dns}:8080/api/users/{proxy}"
 
   request_parameters =  {
     "integration.request.path.proxy" = "method.request.path.proxy"
