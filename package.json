@@ -6,11 +6,12 @@
   "license": "MIT",
   "scripts": {
     "terraform": "env-cmd terraform",
+    "plan": "env-cmd terraform plan environments/staging",
+    "refresh": "env-cmd terraform refresh environments/staging"
     "apply": "env-cmd terraform apply environments/staging",
     "applyy": "env-cmd terraform apply --auto-approve environments/staging",
-    "plan": "env-cmd terraform plan environments/staging",
     "destroy": "env-cmd terraform destroy environments/staging",
-    "refresh": "env-cmd terraform refresh environments/staging"
+    "destroyy": "env-cmd terraform destroy --auto-approve environments/staging",
   },
   "devDependencies": {
     "env-cmd": "10.0.1"
