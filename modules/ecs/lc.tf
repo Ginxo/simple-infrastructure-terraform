@@ -11,7 +11,7 @@ data "aws_ami" "amazon_ecs" {
 }
 
 data "template_file" "lc_user_data" {
-  template = file("./resources/userData/asg-user-data.txt")
+  template = file("./resources/userData/lc-user-data.txt")
   vars = {
     // TODO AML view how linked the cluster name with the terraform reference, if we do it cycle error raised in terraform
     cluster_name = "${var.environment}-cluster"
@@ -22,8 +22,8 @@ data "template_file" "lc_user_data" {
   }
 }
 
-resource "aws_launch_configuration" "web" {
-  name_prefix = "${var.project_name}-config"
+resource "aws_launch_configuration" "launch_configuration" {
+  name_prefix = "${var.environment}-config"
   image_id = data.aws_ami.amazon_ecs.id
   instance_type = "t2.micro"
   key_name = aws_key_pair.keypair.key_name
@@ -36,7 +36,7 @@ resource "aws_launch_configuration" "web" {
 
   user_data = data.template_file.lc_user_data.rendered
 
-  iam_instance_profile = aws_iam_instance_profile.ecs-instance-profile.id
+  iam_instance_profile = aws_iam_instance_profile.ecs_instance_profile.id
 
   lifecycle {
     create_before_destroy = true

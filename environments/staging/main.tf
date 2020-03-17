@@ -9,8 +9,8 @@ terraform {
 # Specify the provider and access details
 provider "aws" {}
 
-module "ecr" {
-  source = "../../modules/ecr"
+module "ecrs" {
+  source = "../../modules/ecrs"
 }
 
 module "ecs" {
@@ -23,7 +23,7 @@ module "ecs" {
   db_user_name = var.db_user_name
   db_password = var.db_password
   aws_region = var.aws_region
-  ecr_dns = module.ecr.ecr_dns
+  ecr_dns = module.ecrs.ecr_dns
   ecr_image_version = "latest"
   db_endpoint = module.rds.db_endpoint
   db_connection_security_group_id = module.rds.rds_connection_security_group_id

@@ -1,7 +1,6 @@
 data "template_file" "user_task_template" {
   template = file("./resources/templates/tasks/template.json")
   vars = {
-    // TODO check the image name and database url
     image_url = "${var.ecr_dns}:${var.ecr_image_version}"
     container_name = "user_container"
     ACTIVE_PROFILE = var.environment
@@ -11,7 +10,7 @@ data "template_file" "user_task_template" {
     DATASOURCE_PASSWORD = var.db_password
     DATASOURCE_DB_NAME = "${var.project_name}${var.environment}"
     log_group_region = var.aws_region
-    log_group_name   = aws_cloudwatch_log_group.app.name
+    log_group_name   = aws_cloudwatch_log_group.cloud_watch.name
   }
 }
 

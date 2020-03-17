@@ -1,4 +1,4 @@
-resource "aws_db_instance" "rds-db" {
+resource "aws_db_instance" "rds_db" {
   identifier = "${var.project_name}-${var.environment}"
   allocated_storage = "20"
   engine = "mysql"

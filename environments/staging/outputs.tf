@@ -1,5 +1,5 @@
 output "ecr_dns" {
-  value = module.ecr.ecr_dns
+  value = module.ecrs.ecr_dns
 }
 
 output "lb_arn" {

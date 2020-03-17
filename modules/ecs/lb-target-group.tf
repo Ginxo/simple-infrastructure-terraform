@@ -1,5 +1,5 @@
 resource "aws_lb_target_group" "lb_target_group" {
-  name_prefix = "lb-"
+  name_prefix = "${substr(var.environment, 0, 3)}-"
   port     = 8080
   protocol = "TCP"
   vpc_id   = data.aws_vpc.selected.id

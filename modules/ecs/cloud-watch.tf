@@ -1,3 +1,3 @@
-resource "aws_cloudwatch_log_group" "app" {
-  name = "tf-ecs-group/app-ghost"
+resource "aws_cloudwatch_log_group" "cloud_watch" {
+  name = "${var.project_name}/${var.environment}"
 }
