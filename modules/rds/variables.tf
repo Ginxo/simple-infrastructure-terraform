@@ -13,3 +13,6 @@ variable "db_user_name" {
 variable "db_password" {
   description = "The Database Password."
 }
+
+variable "vpc_main_id" {}
+variable "vpc_private_subnet_ids" {}

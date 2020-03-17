@@ -1,6 +1,6 @@
 resource "aws_api_gateway_rest_api" "api" {
-name = "${var.environment}-api-gateway"
-description = "Proxy to handle requests to our API"
+  name = "${var.environment}-api-gateway"
+  description = "Proxy to handle requests to our API"
 }
 
 resource "aws_api_gateway_deployment" "api_deployment" {

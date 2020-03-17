@@ -1,12 +1,7 @@
-data "aws_vpc" "selected" {
-  default = true
-}
-
 resource "aws_security_group" "allow_rds_connection" {
   name        = "allow_rds_connection"
   description = "Allow RDS inbound traffic"
-  vpc_id      = data.aws_vpc.selected.id
-
+  vpc_id      = var.vpc_main_id
 
   ingress {
     # TLS (change to whatever ports you need)

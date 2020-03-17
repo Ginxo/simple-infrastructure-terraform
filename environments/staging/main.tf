@@ -36,6 +36,8 @@ module "rds" {
   environment = var.environment
   db_user_name = var.db_user_name
   db_password = var.db_password
+  vpc_main_id = module.ecs.vpc_main_id
+  vpc_private_subnet_ids = module.ecs.vpc_private_subnet_ids
 }
 
 module "api" {
