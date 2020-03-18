@@ -2,7 +2,7 @@ resource "aws_autoscaling_group" "auto_sacling_group" {
   name = "${var.environment}-group"
   max_size = 2
   min_size = 0
-  desired_capacity = 1
+  desired_capacity = 0
   launch_configuration = aws_launch_configuration.launch_configuration.name
   vpc_zone_identifier = [aws_subnet.public-subnet-1.id, aws_subnet.public-subnet-2.id]
   health_check_grace_period = 10
