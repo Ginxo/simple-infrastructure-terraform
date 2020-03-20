@@ -17,4 +17,12 @@ data "template_file" "user_task_template" {
 resource "aws_ecs_task_definition" "user_task_definition" {
   family = "user_task_definition"
   container_definitions = data.template_file.user_task_template.rendered
+
+  execution_role_arn = aws_iam_role.ecs_task_execution_role.arn
+  task_role_arn = aws_iam_role.ecs_task_role.arn
+
+  requires_compatibilities = ["FARGATE"]
+  cpu = 256
+  memory = 512
+  network_mode = "awsvpc"
 }

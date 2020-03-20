@@ -1,7 +1,6 @@
 resource "aws_lb" "lb" {
   name = "${var.environment}-lb"
-  //TODO check internal true
-  internal = false
+  internal = true
   load_balancer_type = "network"
   subnets = [aws_subnet.private-subnet-1.id, aws_subnet.private-subnet-2.id]
 

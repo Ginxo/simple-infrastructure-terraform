@@ -4,6 +4,7 @@
     "image": "${image_url}",
     "memory": 256,
     "name": "${container_name}",
+    "networkMode": "awsvpc",
     "portMappings": [
       {
         "containerPort": 8080,
@@ -20,9 +21,11 @@
     ],
     "logConfiguration": {
       "logDriver": "awslogs",
+      "secretOptions": null,
       "options": {
         "awslogs-group": "${log_group_name}",
-        "awslogs-region": "${log_group_region}"
+        "awslogs-region": "${log_group_region}",
+        "awslogs-stream-prefix": "ecs"
       }
     }
   }

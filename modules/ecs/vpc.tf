@@ -50,14 +50,75 @@ resource "aws_route_table" "main-public" {
     gateway_id = aws_internet_gateway.main-gw.id
   }
 }
+resource "aws_route_table" "main-private" {
+  vpc_id = aws_vpc.main-vpc.id
+
+ route {
+    cidr_block = "0.0.0.0/0"
+    gateway_id = aws_internet_gateway.main-gw.id
+  }
+}
 
 ### route associations public
-resource "aws_route_table_association" "main-public-route-1" {
+resource "aws_route_table_association" "main-public-route-association-1" {
   subnet_id      = aws_subnet.public-subnet-1.id
   route_table_id = aws_route_table.main-public.id
 }
 
-resource "aws_route_table_association" "main-public-2-a" {
+resource "aws_route_table_association" "main-public-route-association-2" {
   subnet_id      = aws_subnet.public-subnet-2.id
   route_table_id = aws_route_table.main-public.id
+}
+resource "aws_route_table_association" "main-private-route-association-1" {
+  subnet_id      = aws_subnet.private-subnet-1.id
+  route_table_id = aws_route_table.main-private.id
+}
+
+resource "aws_route_table_association" "main-private-route-association-2" {
+  subnet_id      = aws_subnet.private-subnet-2.id
+  route_table_id = aws_route_table.main-private.id
+}
+
+resource "aws_vpc_endpoint" "dkr" {
+  vpc_id              = aws_vpc.main-vpc.id
+  private_dns_enabled = true
+  service_name        = "com.amazonaws.${var.aws_region}.ecr.dkr"
+  vpc_endpoint_type   = "Interface"
+  security_group_ids = [
+    aws_security_group.allow_http_anywhere.id,
+  ]
+  subnet_ids = [aws_subnet.private-subnet-1.id, aws_subnet.private-subnet-2.id]
+
+  tags = {
+    Name        = "dkr-endpoint"
+    Environment = var.environment
+  }
+}
+
+resource "aws_vpc_endpoint" "logs" {
+  vpc_id              = aws_vpc.main-vpc.id
+  private_dns_enabled = true
+  service_name        = "com.amazonaws.${var.aws_region}.logs"
+  vpc_endpoint_type   = "Interface"
+  security_group_ids = [
+    aws_security_group.allow_http_anywhere.id,
+  ]
+  subnet_ids = [aws_subnet.private-subnet-1.id, aws_subnet.private-subnet-2.id]
+
+  tags = {
+    Name        = "logs-endpoint"
+    Environment = var.environment
+  }
+}
+
+resource "aws_vpc_endpoint" "s3" {
+  vpc_id            = aws_vpc.main-vpc.id
+  service_name      = "com.amazonaws.${var.aws_region}.s3"
+  vpc_endpoint_type = "Gateway"
+  route_table_ids   = [aws_route_table.main-private.id]
+
+  tags = {
+    Name        = "s3-endpoint"
+    Environment = var.environment
+  }
 }

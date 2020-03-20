@@ -8,7 +8,7 @@ resource "aws_security_group" "allow_ssh_anywhere" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = [aws_vpc.main-vpc.cidr_block]
   }
 
   egress {
@@ -28,7 +28,14 @@ resource "aws_security_group" "allow_http_anywhere" {
     protocol    = "tcp"
     from_port   = 8080
     to_port     = 8080
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = [aws_vpc.main-vpc.cidr_block]
+  }
+
+  ingress {
+    protocol    = "tcp"
+    from_port   = 80
+    to_port     = 80
+    cidr_blocks = [aws_vpc.main-vpc.cidr_block]
   }
 
   ingress {
@@ -43,5 +50,6 @@ resource "aws_security_group" "allow_http_anywhere" {
     to_port         = 0
     protocol        = "-1"
     cidr_blocks     = ["0.0.0.0/0"]
+    prefix_list_ids = [aws_vpc_endpoint.s3.prefix_list_id]
   }
 }
